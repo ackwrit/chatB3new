@@ -26,16 +26,19 @@ class ParameterState extends State<Parameter> {
   @override
   void initState() {
     super.initState();
-    Firestorehelper().getProfil(widget.identifiant)
-        .then((value) {
+    Firestorehelper().getProfil(widget.identifiant).then((value) {
       setState(() {
         monCompteUtilisateur = value;
       });
     });
   }
 
+
   Widget build(BuildContext context) {
     // TODO: implement build
+    print('verification');
+    print(widget.identifiant);
+    print(monCompteUtilisateur.uid);
 
     return Scaffold(
 
@@ -58,20 +61,27 @@ class ParameterState extends State<Parameter> {
               itemCount: documents.length,
               itemBuilder: (context, int index) {
                 Profil user = Profil(documents[index]);
-                return (user.uid != widget.identifiant) ?
-                InkWell(
-                  child: ListTile(
-                    title: Text(user.name+" "+user.lastname),
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (BuildContext context){
-                            return chatPage(moi: monCompteUtilisateur, partenaire: user);
-                          }
-                      ));
-                    },
+                if(user.uid != widget.identifiant){
+                  return InkWell(
+                    child: ListTile(
+                      title: Text(user.name+" "+user.lastname),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context){
+                              return chatPage(moi: monCompteUtilisateur, partenaire: user);
+                            }
+                        ));
+                      },
 
-                  ) ,
-                ) : Container();
+                    ) ,
+                  );
+                }
+                else
+                  {
+                    return Container();
+                  }
+
+
                 /* return ListTile(
                       title: Text(user.name),
                     );*/

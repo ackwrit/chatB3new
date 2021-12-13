@@ -20,7 +20,7 @@ class ZoneTextState extends State<ZoneText>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      color: Colors.grey[800],
+      color: Colors.grey[300],
       padding: const EdgeInsets.all(10),
       child: Row(
         children: [
@@ -45,7 +45,8 @@ class ZoneTextState extends State<ZoneText>{
 
 
   sendBouttonMessage(){
-    if(textEditingController!=null&& textEditingController!=""){
+    print(widget.moi.uid);
+    if(textEditingController!= null && textEditingController!=""){
       String text = textEditingController.text;
       Firestorehelper().sendMessage(text, widget.partenaire, widget.moi);
       setState(() {

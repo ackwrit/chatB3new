@@ -1,3 +1,4 @@
+import 'package:chatb3/MessageController.dart';
 import 'package:chatb3/model/Profil.dart';
 import 'package:chatb3/myWidget/my_zone_text.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,12 @@ class chatPage extends StatefulWidget{
 }
 
 class chatPageState extends State<chatPage>{
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    print('Chat page');
+    print(widget.moi.uid);
     return Scaffold(
       appBar: AppBar(
         title: Text('Chat  B3'),
@@ -37,7 +41,7 @@ class chatPageState extends State<chatPage>{
         new Flexible(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            child: Text('Message changeant'),
+            child: MessageController(moi: widget.moi,partenaire: widget.partenaire,),
 
           ),
         ),

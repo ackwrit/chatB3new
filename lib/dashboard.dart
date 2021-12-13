@@ -55,8 +55,9 @@ Widget bodyPage(){
     return PageView(
       controller: controller,
       children: [
+        Parameter(identifiant:widget.identifiant),
         Text("Profil") ,
-        Parameter(identifiant:widget.identifiant)
+
       ],
       onPageChanged: (value){
         setState(() {

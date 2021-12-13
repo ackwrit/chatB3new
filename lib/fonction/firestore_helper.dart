@@ -12,7 +12,7 @@ class Firestorehelper{
   final firebase_Aut      =  FirebaseAuth.instance;
   final firebaseStorage   =  FirebaseStorage.instance;
   final cloudfFirestore   =  FirebaseFirestore.instance;
-  final firestore_user  =  FirebaseFirestore.instance.collection("user");
+  final firestore_user  =  FirebaseFirestore.instance.collection("profil");
   final firestockageImage =  FirebaseStorage.instance.ref("imageProfil");
   final firestore_message = FirebaseFirestore.instance.collection("message");
   final firestore_conversation = FirebaseFirestore.instance.collection("conversation");
@@ -75,9 +75,7 @@ class Firestorehelper{
   Future<Profil> getProfil(String identifiant)async
   {
     //recupération de la collection et le document dans la base de données
-    DocumentSnapshot snapshot = await FirebaseFirestore.instance
-        .collection("user")
-        .doc(identifiant).get();
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection("profil").doc(identifiant).get();
     // construction du type profil dans notre exemple
     return Profil(snapshot);
   }

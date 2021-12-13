@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               obscureText: true,
               onChanged: (value){
                 setState(() {
-                  mail = value;
+                  password = value;
                 });
 
               },
